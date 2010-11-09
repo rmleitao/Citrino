@@ -1,0 +1,13 @@
+Description:
+    The admin generator creates a basic crud admin, create your 
+    model first.
+
+    The generator takes one argument which will be the name of the
+    model.
+ 
+Examples:
+    ./script/generate orange_admin User
+
+        This will create two files:
+            users_controller.rb
+            _form.html.erb 

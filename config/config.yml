@@ -1,0 +1,24 @@
+# Configuration options can be accessed as
+#   configatron.site_name
+
+development: &local
+    site_name: "Project"
+    site_url: http://localhost:3000
+
+    enable_user_registration: true
+    enable_request_reset_pass: true
+    
+    company_name: My Company
+    admin_email: info@myproject.pt
+    
+    meta_keywords: "keywords"
+    meta_description: "awesome desc."
+   
+production:
+  <<: *local 
+
+staging:
+  <<: *local
+
+test:
+  <<: *local

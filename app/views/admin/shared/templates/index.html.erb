@@ -1,0 +1,33 @@
+<% content_for :header do -%>
+  <%= @options[:page_title] %>
+<% end -%>
+
+<% content_for :submenu do -%>
+  <% if @options[:submenu_partial].present? %>
+    <%= render(:partial=>'/admin/shared/tabs/'+@options[:submenu_partial]) %>
+  <%end%>
+<%end%>
+
+<% content_for :filters do -%>
+  <% if File.exists?(File.join(controller_full_path, '_filters.html.erb')) -%>
+    <%= render :partial => 'filters' %>
+  <%end%>
+  
+  <%= admin_new_link_button unless @options[:skip_new] %>
+<%end%>
+
+<% if File.exists?(File.join(controller_full_path, '_index_after_title.html.erb')) -%>
+  <%= render :partial => 'index_after_title' %>
+<% elsif File.exists?(File.join(controller_full_path, '_after_title.html.erb')) -%>
+  <%= render :partial => 'after_title' %>
+<% end -%>
+
+<%= model_table(@items, @options[:columns], @options[:show_actions], nil) %>
+<p><%= wpaginate @items if @items.respond_to?(:total_pages) %></p>
+<p><%= page_entries_info(@items)%></p>
+ 
+<% if File.exists?(File.join(controller_full_path, '_index_after_table.html.erb')) -%>
+  <%= render :partial => 'index_after_table' %>
+<% elsif File.exists?(File.join(controller_full_path, '_after_table.html.erb')) -%>
+  <%= render :partial => 'after_table' %>
+<% end -%>

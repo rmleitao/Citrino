@@ -1,0 +1,11 @@
+<% f.inputs do %>
+  <% if @user.new_record? %>
+    <%= f.input :login, :required => true %>
+  <%end%>
+    <%= f.input :email, :required => true %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name%>
+    <%= f.input :password, :as => :password, :input_html => { :autocomplete => "off" }, :required => @user.new_record? %>
+    <%= f.input :password_confirmation, :as => :password, :input_html => { :autocomplete => "off" }, :required => @user.new_record? %>
+    <%= f.input :has_role_admin, :as => :radio, :label =>'Admin' %>
+<%end%>

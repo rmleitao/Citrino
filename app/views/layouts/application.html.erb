@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title><%= configatron.site_name %></title>
+  <meta name="description" content="TEMP"/>
+  <meta name="author" content="THINK ORANGE"/>
+  <link rel="shortcut icon" href="/favicon.ico"/>
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+  
+  <%= yield_authenticity_token %>
+  
+	<% bundle(:name => "front_bundle_css") do %>
+    <%= stylesheet_link_tag '960/reset.css', :media => 'screen, projection' %>
+    <%= stylesheet_link_tag '960/960.css', :media => 'screen, projection' %>
+    <%= stylesheet_link_tag '960/text.css', :media => 'screen, projection' %>
+    <%= stylesheet_link_tag 'admin/formtastic.css', :media => 'screen, projection' %>
+    <%= stylesheet_link_tag 'frontend/styles.css', :media => 'screen, projection' %>
+
+  <%end%>
+  
+	<!--[if lte IE 7]>
+	  <%= stylesheet_link_tag 'frontend/ie7_fix', :media => 'screen' %>
+	<![endif]-->
+</head>
+<body>
+<div class="header">
+  <div class="container_16">	
+    <div class="grid_10">
+        <h1><%= configatron.site_name %></h1>
+    </div>
+    <div class="grid_6">
+      <div class="nav-wrap">  
+          <ul class="group" id="menu">
+          <% if current_user.present? and current_user.has_role?(:admin) %>
+            <li><%= link_to t("layouts.user_navigation.administration"), admin_dashboard_path %></li>
+          <%end%>
+          <% if current_user.present?%>
+            <li><%= link_to t("layouts.user_navigation.profile"), profile_path  %></li>
+            <li><%= link_to  t("layouts.user_navigation.logout"), logout_path %></li>
+          <%else%>
+          <% if configatron.enable_user_registration %>
+            <li><%= link_to t("layouts.user_navigation.register"), register_path %></li>
+          <%end%>
+            <li><%= link_to t("layouts.user_navigation.login"), login_path %></li>
+          <%end%>
+          </ul>
+      </div>
+    </div>     
+
+
+  </div>
+  <div class="clear"></div>
+</div>
+
+<div id="main">
+   <div class="container_16">	
+     <div class="grid_16">
+       <%= flash_message %>
+     </div>
+     <div class="grid_16">
+       <%= yield %>
+       <div class="clear"></div>
+     </div>
+   </div>
+   <div class="clear"></div>
+</div>
+
+
+<div id="bottom">
+  <div class="container_16">
+    <div class="grid_16">
+      <%= render :partial=>'/shared/footer'%>
+      <div class="clear"></div>
+    </div>
+  </div> 
+  <div class="clear"></div>
+</div>
+
+<!-- Grab Google CDN's jQuery. fall back to local if necessary -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script>!window.jQuery && document.write('<script src="javascripts/admin/jquery-1.4.js"><\/script>')</script>
+<script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script>
+ 
+<!--[if lt IE 7 ]>
+  <script src="javascripts/frontend/ddpngfix.js?v=1"></script>
+	<script>DD_belatedPNG.fix('.png-fix');</script>  	
+<![endif]-->
+
+<script src="javascripts/application.js?v=1"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    //init stuff
+  });
+</script>
+
+<!-- asynchronous google analytics: mathiasbynens.be/notes/async-analytics-snippet 
+     change the UA-XXXXX-X to be your site's ID -->
+<script>
+ // var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+ // (function(d, t) {
+ //  var g = d.createElement(t),
+ //      s = d.getElementsByTagName(t)[0];
+ //  g.async = true;
+ //  g.src = '//www.google-analytics.com/ga.js';
+ //  s.parentNode.insertBefore(g, s);
+ // })(document, 'script');
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+#for production server!
+development:
+  adapter: mysql
+  database: best_dev
+  username: root
+  password: root
+  encoding: utf8
+
+test:
+  adapter: mysql
+  database: best_test
+  username: root
+  password: root
+  encoding: utf8
+
+production:
+  adapter: mysql
+  database: best_prod
+  username: root
+  password: root
+  encoding: utf8

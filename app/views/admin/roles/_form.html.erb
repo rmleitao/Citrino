@@ -1,0 +1,12 @@
+<% render :layout => "/admin/shared/templates/form_header", :locals=>{:tabs=>['Geral']} do %>
+<div>
+  <% f.inputs do %>
+      <%= f.input :id %>
+      <%= f.input :name %>
+      <%= f.input :authorizable_type %>
+      <%= f.input :authorizable_id %>
+      <%= f.input :created_at %>
+      <%= f.input :updated_at %>
+    <%end-%>
+</div> 
+<%end%>

@@ -1,0 +1,24 @@
+<% content_for :header do -%>
+	<%= t('admin.button.edit_txt')%> <%= resource.class.human_name %>
+<% end -%>
+
+<%= render(:partial=>'/admin/shared/tabs/'+@options[:tabs_partial]) if @options[:tabs_partial].present? %>
+
+<% if File.exists?(File.join(controller_full_path, '_after_title.html.erb')) -%>
+  <%= render :partial => 'after_title' %>
+<% end -%>
+
+<% semantic_form_for(resource, :url => eval("admin_#{resource.class.to_s.underscore}_path"), :html => { :multipart => true }) do |f| %>
+  <%= f.error_messages %>
+
+  <div class="panes">
+    <%= render :partial => 'form', :locals => {:f => f} %>
+  </div>
+
+  <%= render :partial=>"/admin/shared/templates/form_end", :locals=>{:button_txt=>t('admin.button.edit_txt'), :back_to=>eval("admin_#{resource.class.to_s.underscore.pluralize}_path")}%>
+ 
+<% end -%>
+
+<% if File.exists?(File.join(controller_full_path, '_after_table.html.erb')) -%>
+  <%= render :partial => 'after_table' %>
+<% end -%>

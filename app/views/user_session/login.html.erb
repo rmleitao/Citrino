@@ -1,0 +1,28 @@
+
+<h1> <%= t("user_session.login.title") %></h1>
+
+
+<div class="grid_8 alpha">
+<% semantic_form_for @user_session, :url => login_path, :html => {:class => "small-form"} do |form| %>
+
+  <% form.inputs do %>
+    <%=form.input :login%>
+    <%=form.input :password, :as => :password%>
+    <li>
+      <%= form.check_box :remember_me  %>
+      <%= form.label :remember_me %>
+    </li>
+    
+    <% form.buttons do%>
+      <%= form.commit_button "Login" %>
+      <%= t("or") %>
+      <%= link_to t("cancel"), dashboard_path %>
+    <%end%>
+  <%end%>
+<%end%>
+</div>
+<div class="grid_8 omega">
+<%= link_to t("user_session.login.reset_password"), request_reset_password_path  if configatron.enable_request_reset_pass%>
+</div>
+
+<div class="clear"></div>

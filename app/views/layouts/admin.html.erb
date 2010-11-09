@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link rel="shortcut icon" href="/images/favicon.ico"/>
+	<title><%= configatron.site_name %> Admin</title>
+	<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+	
+	<% bundle(:name => "admin_bundle") do %>
+	  <%= stylesheet_link_tag '960/reset.css', :media => 'screen, projection' %>
+    <%= stylesheet_link_tag '960/fluid_grid.css', :media => 'screen, projection' %>
+    <%= stylesheet_link_tag '960/text.css', :media => 'screen, projection' %>
+
+    <%= stylesheet_link_tag 'admin/formtastic.css', :media => 'screen, projection' %>
+    <%= stylesheet_link_tag 'admin/uniform.default.css', :media => 'screen, projection' %>
+    <%= stylesheet_link_tag 'admin/admin.css', :media => 'screen, projection' %>
+
+		<%= javascript_include_tag "admin/jquery-1.4", "jrails", "application" %>
+		<%= javascript_include_tag "admin/jquery.tools.min.js", "admin/jquery.treeTable.min", "admin/jquery.tablednd_0_5.js", "admin/jquery.uniform.min.js" %>
+	<%end%>
+	 
+	
+	<!--[if lte IE 7]>
+	  <%= stylesheet_link_tag 'admin/ie', :media => 'screen' %>
+	<![endif]-->
+</head>
+<body>
+  
+  <div class="container_16">
+    <div id="header">
+      <div id="title" class="grid_12">
+        <h1><%= configatron.site_name %></h1>
+      </div>
+      <div class="grid_4">
+        <div id="global_links">
+         	<strong><%= current_user.login %></strong> | <%= link_to "Site", root_url %> | <%= link_to "Logout", logout_url, :method => :delete %>
+        </div>
+      </div>
+      <div class="clear"></div>
+      <div class="grid_16">
+        <div id="tabs"><%= render :partial => 'admin/shared/tabs/tabs' %></div>
+      </div>
+      <div class="clear"></div>
+    </div>    
+    
+    <div id="submenu">
+      <div class="grid_16">
+    	  <%= yield(:submenu)%>
+    	  <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    
+  </div>
+  
+  <div id="main" class="container_16">
+    <div id="messages">
+      <%= flash_message %>
+		</div>
+		<div class="clear"></div>
+
+    <div class="head">
+      <div class="grid_6">
+        <h2><%= yield_or_default yield(:header), "Use 'content_for :header do; end' in your view to set this title" %></h2>
+      </div>
+      <div class="grid_10 ">
+        <div class="fright"><%= yield_or_default(yield(:filters)) %></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    
+		<div class="center">    
+	    <div class="grid_16">
+        <%= yield %>
+      </div>
+      <div class="clear"></div>
+    </div>
+    
+    <div class="clear"></div>
+  </div>  
+
+
+  <div id="footer" class="container_16">
+    <div class="grid_16">
+	    <%= configatron.site_name %> Admin.
+    </div>
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("select, input:text, input:password, textarea, input:checkbox, input:radio, input:file").uniform();
+    });
+	</script>
+	   
+</body>
+</html>

@@ -1,0 +1,12 @@
+<% content_for :filters do -%>
+  <ul class="tabs">
+	  <% tabs.each do |tab|%>
+	    <li><a href="#"><%=tab%></a></li>
+	  <%end%>
+  </ul>
+  <script type="text/javascript">
+	  $(window).bind('load', function() {
+    	$("ul.tabs").tabs("div.panes > div"); 
+	  });
+  </script>
+<%end%>

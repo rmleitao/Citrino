@@ -1,0 +1,38 @@
+
+<div class="grid_8 alpha">
+  <h1><%= t("user_session.profile.title") %></h1>
+  <%= link_to t("user_session.profile.edit"), edit_profile_path %>
+</div>
+
+<div class="grid_8 omega">
+  <ul>
+    <li>
+      <%= t("activerecord.attributes.user.login") + ":" %>  <%=@user.login%>
+    </li>
+    <li>
+      <%= t("activerecord.attributes.user.email") + ":" %> <%= @user.email %>
+    </li>
+    <li><%= t("activerecord.attributes.user.name") + ":" %>  <%=@user.last_name%> <%= @user.first_name%></li>
+    <li>
+      <%= t("activerecord.attributes.user.created_at") + ":"%>
+      <%= l(@user.created_at.localtime, :format => "%e %B %Y") if @user.last_login_at.present?%>
+    </li>
+    <li>Info
+      <ul>
+        <li>
+          <%= t("activerecord.attributes.user.last_login_at") + ":"%>
+          <%= l(@user.last_login_at.localtime, :format => "%e %B %Y %H:%M")%>
+        </li>
+        <li>
+          <%= t("activerecord.attributes.user.last_login_ip") + ":" %>
+          <%= @user.last_login_ip%>
+        </li> 
+        <li>
+          <%=t("activerecord.attributes.user.current_login_ip") + ":"%>
+          <%= @user.current_login_ip%>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<div class="clear"></div>

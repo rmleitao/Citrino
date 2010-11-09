@@ -1,0 +1,15 @@
+.idea
+.DS_Store
+log/*.*
+tmp/**/*
+db/*.sqlite3
+coverage/
+db/schema.rb
+config/database.yml
+rerun.txt
+public/frags/*
+public/system/*
+public/uploads/*
+public/stylesheets/cache/*.*
+public/javascripts/cache/*.*
+.bundle

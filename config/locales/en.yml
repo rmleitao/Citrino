@@ -1,0 +1,131 @@
+en:
+  application_title: "Application Title"
+  cancel: "Cancel"
+  or: "or"
+  access_denied: "Access denied."
+  access_denied_try_to_login: "Access denied. Try to log in first."
+  go_back: "&laquo; Go back"
+  gototop: "Go to top"
+  share: "Share"
+  youremail: "Your e-mail address"
+  subscribe: "Subscribe"
+  readall: "Read all"
+  contactus: "Contact us"
+  knowmore: "Read more"
+  required: "Required"
+  send: "Send"
+  see_all: "See all"
+  tags: "Tags"
+  back: "Back"
+  notifier:
+    title_of_reset_password_email: "Reset Password instructions"
+    reset_password: "A request to reset your password has been made. If you did not make this request, simply ignore this email. If you did make this request, follow the link below."
+    reset: Reset Password!
+
+  layouts:
+    main_navigation:
+      dashboard: "Dashboard"
+
+    user_navigation:
+      login: "Login"
+      logout: "Logout"
+      register: "Register"
+      profile: "Profile"
+      administration: "Administration"
+
+  user_session:
+    login:
+      title: "Login"
+      login: "Login"
+      reset_password: "Reset password"
+      success_login: "Login successful!"
+
+    logout:
+      success_logout: "Logout successful!"
+
+    register:
+      title: "Register"
+      register: "Register"
+      account_registred: "Account registered!"
+
+    request_reset_password:
+      title: "Reset Password"
+      description: "Fill out the form below and instructions to reset your password will be emailed to you:"
+      email: "E-Mail"
+      send_request: "Send request"
+      email_notification: "Instructions to reset your password have been emailed to you. Please check your email."
+      nonexistent_email: "No user was found with that email address"
+
+    reset_password:
+      title: "Change password"
+      reset: "Reset Password"
+      password_updated: "Password successfully updated"
+
+    load_user_using_perishable_token:
+      wrong_perishable_token: "We're sorry, but we could not locate your account. If you are having issues try copying and pasting the URL from your email into your browser or restarting the reset password process."
+
+    profile:
+      edit: "edit"
+      connection_information: "Connection information"
+
+    edit_profile:
+      title: "Change Profile"
+      change: "Change"
+
+  admin:
+    button:
+      new: "New"
+      create_txt: "Create"
+      edit_txt: "Save"
+      no_records: "No records."
+        
+    users:
+      index:
+        title: "Accounts"
+        login: "Login"
+        name: "Name"
+        email: "E-Mail"
+        created_at: "Created At"
+        last_login_at: "Last Login At"
+        last_login_ip: "Last Login IP"
+
+        confirm_for_delete: "Do you want to delete user with login '{{login}}'?"
+        edit_hint: "Edit"
+        delete_hint: "Delete"
+
+      new:
+        title: "New Account"
+
+      edit:
+        title: "Update Account"
+
+      sidebar:
+        new: "New Account..."
+
+  activerecord:
+    attributes:
+      user:
+        login: "Login"
+        email: "E-Mail"
+        first_name: "First Name"
+        last_name: "Last Name"
+        password: "Password"
+        password_confirmation: "Password confirmation"
+        created_at: "Created At"
+        last_login_at: "Last Login At"
+        last_login_ip: "Last Login IP"
+        current_login_ip: "Current IP"
+
+  authlogic:
+    attributes:
+      user_session:
+        login: "Login"
+        email: "E-Mail"
+        password: "Password"
+        remember_me: "Remember me"
+
+  formtastic:
+    actions:
+      user:
+        create: "Create Account"
+        update: "Update Account"

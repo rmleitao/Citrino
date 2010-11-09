@@ -1,0 +1,27 @@
+
+ 
+
+<div class="grid_8 alpha">
+  <h1> <%= t("user_session.register.title") %></h1>
+</div>  
+<div class="grid_8 omega">
+  <% semantic_form_for @user, :url => register_path, :html => {:class => "medium-form"} do |form|%>
+    <% form.inputs do%>
+      <%= form.input :login, :input_html => { :autocomplete => "off" }, :required => true %>
+      <%= form.input :email, :required => true %>
+      <%= form.input :first_name %>
+      <%= form.input :last_name %>
+      <%= form.input :password, :input_html => { :autocomplete => "off" }, :required => true %>
+      <%= form.input :password_confirmation, :input_html => { :autocomplete => "off" }, :required => true %>
+      <% form.buttons do %>
+        <%= form.commit_button t(".register") %>
+        <li class="cancel">
+          <span><%= t("or")%> <%= link_to t("cancel"), dashboard_path%></span>
+        </li>
+        <%end%>
+      <%end%>
+  <%end%>
+</div>
+<div class="clear"></div>
+
+
