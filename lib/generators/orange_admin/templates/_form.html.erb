@@ -1,9 +1,8 @@
-<%% render :layout => "/admin/shared/templates/form_header", :locals=>{:tabs=>['Geral']} do %>
+<%%= render :layout => "/admin/shared/templates/form_header", :locals=>{:tabs=>['Geral']} %>
 <div>
   <%% f.inputs do %>
   <% column_names.each do |attribute| -%>
     <%%= f.input :<%= attribute %> %>
   <%end-%>
   <%%end-%>
-</div> 
-<%%end%>
+</div>
